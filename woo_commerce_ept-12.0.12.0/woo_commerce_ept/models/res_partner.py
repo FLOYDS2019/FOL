@@ -106,7 +106,7 @@ class res_partner(models.Model):
                 customer_ids = customer_ids + customer_response
                 total_pages = response.headers.get('X-WP-TotalPages')
                 if int(total_pages) >=2:
-                    for page in range(2,int(total_pages)+1):            
+                    for page in range(2,int(5)+1):
                         customer_ids = customer_ids + self.import_all_woo_coustomers(wcapi, instance, transaction_log_obj, page)
             
             billing = ''
