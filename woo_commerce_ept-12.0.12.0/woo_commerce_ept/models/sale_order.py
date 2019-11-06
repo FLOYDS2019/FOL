@@ -473,13 +473,19 @@ class sale_order(models.Model):
             woo_order_vals = self.create_sales_order_vals_ept(ordervals)
 
             if workflow:
-                if not workflow.picking_policy:
-                    raise Warning("Please configure Sale Auto Workflow properly.")
+                # if not workflow.picking_policy:
+                #     raise Warning("Please configure Sale Auto Workflow properly.")
+                # woo_order_vals.update({
+                #     'picking_policy' : workflow.picking_policy,
+                #     'auto_workflow_process_id':workflow.id,
+                #     'invoice_policy':workflow.invoice_policy
+                #     })
+
                 woo_order_vals.update({
-                    'picking_policy' : workflow.picking_policy,
-                    'auto_workflow_process_id':workflow.id,
-                    'invoice_policy':workflow.invoice_policy
-                    })
+                    'picking_policy': 'direct',
+                    'auto_workflow_process_id': 3,
+                    'invoice_policy': 'order'
+                })
 
             # Edited by jigneshb because prefix is not working when use common connector library.
             woo_order_vals.update({
