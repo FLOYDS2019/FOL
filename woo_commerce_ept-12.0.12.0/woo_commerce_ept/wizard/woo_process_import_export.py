@@ -4,6 +4,10 @@ from _collections import OrderedDict
 from _datetime import datetime
 from datetime import datetime
 
+import logging
+
+_logger = logging.getLogger(__name__)
+
 class woo_process_import_export(models.TransientModel):
     _name = 'woo.process.import.export'   
     _description = "WooCommerce Import/Export Process"

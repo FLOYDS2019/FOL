@@ -5,6 +5,10 @@ import requests
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+import logging
+
+_logger = logging.getLogger(__name__)
+
 class sale_order(models.Model):
     _inherit="sale.order"
 
@@ -480,6 +484,12 @@ class sale_order(models.Model):
                 #     'auto_workflow_process_id':workflow.id,
                 #     'invoice_policy':workflow.invoice_policy
                 #     })
+
+                _logger.info('picking_policy: %s', workflow.picking_policy)
+                _logger.info('auto_workflow_process_id: %s', workflow.id)
+                _logger.info('invoice_policy: %s', workflow.invoice_policy)
+
+
 
                 woo_order_vals.update({
                     'picking_policy': 'direct',
